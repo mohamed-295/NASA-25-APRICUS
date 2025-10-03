@@ -5,7 +5,9 @@ import 'core/theme/app_theme.dart';
 import 'core/constants/routes.dart';
 import 'providers/game_provider.dart';
 import 'screens/cosmic_hub_screen.dart';
-
+import 'screens/story_library_screen.dart';
+import 'screens/settings_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,9 +67,12 @@ class MyApp extends StatelessWidget {
           title: 'Apricus - Space Weather Adventures',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.darkTheme,
-          initialRoute: Routes.hub,
+          initialRoute: Routes.splash,
           routes: {
+            Routes.splash: (context) => const SplashScreen(),
             Routes.hub: (context) => const CosmicHubScreen(),
+            Routes.library: (context) => const StoryLibraryScreen(),
+            Routes.settings: (context) => const SettingsScreen(),
           },
         ),
       ),
