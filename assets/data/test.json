@@ -1,0 +1,72 @@
+{
+  "story": {
+    "id": 1,
+    "title": "Sunny and Windy",
+    "pages": [
+      {
+        "page_number": 1,
+        "image": "assets/images/stories/sunny_and_windy/1.png",
+        "content": {
+          "left_bottom": "Hi! I'm Sunny, the Sun.",
+          "right_bottom": "I live in the Milkyway, where other planets like Mars and Venus live too!"
+        }
+      },
+      {
+        "page_number": 2,
+        "image": "assets/images/stories/sunny_and_windy/2.png",
+        "content": {
+          "left_bottom": "This is my best friend, Windy the Solar wind.",
+          "right_bottom": "Windy loves adventures. She zooms through space every day to say hi to the planets."
+        }
+      },
+      {
+        "page_number": 3,
+        "image": "assets/images/stories/sunny_and_windy/3.png",
+        "content": {
+          "left_bottom": "Today, Windy is visiting Mercury. \"Hi Mercury\" she shouts. Mercury waves back at her.",
+          "right_bottom": "He's the closest to me, so It's always super warm there."
+        }
+      },
+      {
+        "page_number": 4,
+        "image": "assets/images/stories/sunny_and_windy/4.png",
+        "content": {
+          "left_bottom": "Next stop is Venus. \"Hi Venus!\" says Windy.",
+          "right_bottom": "Venus is covered in thick clouds. That's why Windy can't see much, but Venus giggles anyway."
+        }
+      },
+      {
+        "page_number": 5,
+        "image": "assets/images/stories/sunny_and_windy/5.png",
+        "content": {
+          "left_bottom": "Now Windy flies to Earth",
+          "right_bottom": "Windy loves Earth most of all. Why? Because Earth wears a superhero's cape—the magnetic shield! \"Hi Earth!\" Windy sings."
+        }
+      },
+      {
+        "page_number": 6,
+        "image": "assets/images/stories/sunny_and_windy/6.png",
+        "content": {
+          "left_bottom": "Earth replies warmly, \"Hello, Windy! Thanks for stopping by.\"",
+          "right_bottom": "Windy rushes around Earth's magnetic shield, playing tag with invisible lines of energy. When she touches the shield just right, magical lights appear in the sky—the auroras!"
+        }
+      },
+      {
+        "page_number": 7,
+        "image": "assets/images/stories/sunny_and_windy/7.png",
+        "content": {
+          "left_bottom": "They dance and swirl in greens, pinks, and purples like ribbons of light. Windy claps. \"Oh, I love colors! Aurora is my favorite game with you, Earth.\"",
+          "right_up": "Down below, people on Earth look up at the glowing sky in wonder. \"Wow!\" they whisper. \"The northern lights are amazing tonight!\" Windy feels happy that her playtime brings joy to Earth's people."
+        }
+      },
+      {
+        "page_number": 8,
+        "image": "assets/images/stories/sunny_and_windy/8.png",
+        "content": {
+          "left_bottom": "But she knows her adventure isn't done. There are still more planets waiting for her visit.",
+          "right_bottom": "\"Bye-bye, Earth!\" Windy waves as she zips away, leaving the auroras to sparkle a little longer. Earth waves back. \"Safe travels, Windy! Come visit soon.\""
+        }
+      }
+    ]
+  }
+}
