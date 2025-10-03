@@ -1,0 +1,283 @@
+{
+    "story": [
+        {
+            "id": 1,
+            "title": "Sunny and Windy",
+            "cover_image": "assets/images/story_covers/Sunny_Windy.png",
+            "status": "Released",
+            "pages": [
+                {
+                    "page_number": 1,
+                    "image": "assets/images/stories/sunny_and_windy/1.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "Hi! I'm Sunny, the Sun.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_1.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "I live in the Milkyway, where other planets like Mars and Venus live too!",
+                            "audio": "assets/voiceover/Sunny_Windy/record_2.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 2,
+                    "image": "assets/images/stories/sunny_and_windy/2.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "This is my best friend, Windy the Solar wind.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_3.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "Windy loves adventures. She zooms through space every day to say hi to the planets.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_4.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 3,
+                    "image": "assets/images/stories/sunny_and_windy/3.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "Today, Windy is visiting Mercury. \"Hi Mercury\" she shouts. Mercury waves back at her.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_5.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "He's the closest to me, so It's always super warm there.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_6.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 4,
+                    "image": "assets/images/stories/sunny_and_windy/4.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "Next stop is Venus. \"Hi Venus!\" says Windy.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_7.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "Venus is covered in thick clouds. That's why Windy can't see much, Venus giggles anyway.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_8.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 5,
+                    "image": "assets/images/stories/sunny_and_windy/5.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "Now Windy flies to Earth",
+                            "audio": "assets/voiceover/Sunny_Windy/record_9.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "Windy loves Earth most of all. Why? Because Earth wears a superhero's cape—the magnetic shield! \"Hi Earth!\" Windy sings.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_10.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 6,
+                    "image": "assets/images/stories/sunny_and_windy/6.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "Earth replies warmly, \"Hello, Windy! Thanks for stopping by.\"",
+                            "audio": "assets/voiceover/Sunny_Windy/record_11.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "Windy rushes around Earth's magnetic shield, playing tag with invisible lines of energy. When she touches the shield just right, magical lights appear in the sky—the auroras!",
+                            "audio": "assets/voiceover/Sunny_Windy/record_12.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 7,
+                    "image": "assets/images/stories/sunny_and_windy/7.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "They dance and swirl in greens, pinks, and purples like ribbons of light. Windy claps. \"Oh, I love colors! Aurora is my favorite game with you, Earth.\"",
+                            "audio": "assets/voiceover/Sunny_Windy/record_13.mp3"
+                        },
+                        "right_up": {
+                            "text": "Down below, people on Earth look up at the glowing sky in wonder. \"Wow!\" they whisper. \"The northern lights are amazing tonight!\" Windy feels happy that her playtime brings joy to Earth's people.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_14.mp3"
+                        }
+                    }
+                },
+                {
+                    "page_number": 8,
+                    "image": "assets/images/stories/sunny_and_windy/8.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "But she knows her adventure isn't done. There are still more planets waiting for her visit.",
+                            "audio": "assets/voiceover/Sunny_Windy/record_15.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "\"Bye-bye, Earth!\" Windy waves as she zips away, leaving the auroras to sparkle a little longer. Earth waves back. \"Safe travels, Windy! Come visit soon.\"",
+                            "audio": "assets/voiceover/Sunny_Windy/record_16.mp3"
+                        }
+                    }
+                }
+            ],
+            "final_quiz": {
+                "questions": [
+                    {
+                        "id": 1,
+                        "text": "What creates the beautiful northern lights?",
+                        "options": [
+                            "Solar wind + Earth's magnetic field",
+                            "Moonlight",
+                            "City lights"
+                        ],
+                        "correct_answer": 0,
+                        "explanation": "When Windy (solar wind) plays with Earth's magnetic shield, it creates the magical auroras!"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Why is Mercury so warm?",
+                        "options": [
+                            "It has many volcanoes",
+                            "It's closest to the Sun",
+                            "It's covered in fire"
+                        ],
+                        "correct_answer": 1,
+                        "explanation": "Mercury is the closest planet to the Sun, so it gets very hot!"
+                    },
+                    {
+                        "id": 3,
+                        "text": "What is Earth's magnetic shield?",
+                        "options": [
+                            "A real cape",
+                            "An invisible force field",
+                            "A big umbrella"
+                        ],
+                        "correct_answer": 1,
+                        "explanation": "Earth's magnetic field acts like an invisible shield that protects us!"
+                    },
+                    {
+                        "id": 4,
+                        "text": "What causes the northern lights?",
+                        "options": [
+                            "Fireworks",
+                            "Solar wind hitting Earth's magnetic field",
+                            "City lights"
+                        ],
+                        "correct_answer": 1,
+                        "explanation": "Solar wind particles collide with Earth's atmosphere to create beautiful lights!"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "title": "Sunny's Big Sneeze",
+            "cover_image": "assets/images/story_covers/Coming_Soon.png",
+            "status": "Coming soon",
+            "pages": [
+                {
+                    "page_number": 1,
+                    "image": "assets/images/stories/sunny_and_windy/1.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "",
+                            "audio": "assets/audio/stories/sunny_and_windy/record_1.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "",
+                            "audio": "assets/audio/stories/sunny_and_windy/record_2.mp3"
+                        }
+                    }
+                }
+            ],
+            "final_quiz": {
+                "questions": [
+                    {
+                        "id": 1,
+                        "text": "",
+                        "options": [
+                            "",
+                            "",
+                            ""
+                        ],
+                        "correct_answer": 1,
+                        "explanation": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "title": "Sunny's Tangled Hair",
+            "cover_image": "assets/images/story_covers/Coming_Soon.png",
+            "status": "Coming soon",
+            "pages": [
+                {
+                    "page_number": 1,
+                    "image": "",
+                    "content": {
+                        "left_bottom": {
+                            "text": "",
+                            "audio": ""
+                        },
+                        "right_bottom": {
+                            "text": "",
+                            "audio": ""
+                        }
+                    }
+                }
+            ],
+            "final_quiz": {
+                "questions": [
+                    {
+                        "id": 1,
+                        "text": "",
+                        "options": [
+                            "",
+                            "",
+                            ""
+                        ],
+                        "correct_answer": 1,
+                        "explanation": ""
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "title": "Sunny's Special Birthday",
+            "cover_image": "assets/images/story_covers/Coming_Soon.png",
+            "status": "Coming soon",
+            "pages": [
+                {
+                    "page_number": 1,
+                    "image": "assets/images/stories/sunny_and_windy/1.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "",
+                            "audio": "assets/audio/stories/sunny_and_windy/record_1.mp3"
+                        },
+                        "right_bottom": {
+                            "text": "",
+                            "audio": "assets/audio/stories/sunny_and_windy/record_2.mp3"
+                        }
+                    }
+                }
+            ],
+            "final_quiz": {
+                "questions": [
+                    {
+                        "id": 1,
+                        "text": "",
+                        "options": [
+                            "",
+                            "",
+                            ""
+                        ],
+                        "correct_answer": 1,
+                        "explanation": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

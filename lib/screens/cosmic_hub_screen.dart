@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/constants/app_colors.dart';
 import '../core/constants/routes.dart';
 import '../services/audio_service.dart';
-import '../widgets/shared/starfield_background.dart';
+import '../widgets/shared/static_background.dart';
 import '../widgets/shared/play_button.dart';
 import '../widgets/hub/sunny_character.dart';
 import '../widgets/hub/orbiting_objects.dart';
@@ -36,8 +36,15 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
       vsync: this,
     )..repeat(reverse: true);
     
-    // Start background music
+    // Start or resume background music
     AudioService().playBackgroundMusic();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Resume music when returning to cosmic hub
+    AudioService().resumeMusic();
   }
 
   @override
@@ -85,8 +92,8 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
     return Scaffold(
       body: Stack(
         children: [
-          // Starfield background
-          const StarfieldBackground(),
+          // Static background
+          const StaticBackground(),
             
           // Main content
           Center(
@@ -150,8 +157,8 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
           
           // Settings button (top right)
           Positioned(
-            top: 40,
-            right: 20,
+            top: 15,
+            right: 10,
             child: IconButton(
               icon: const Icon(Icons.settings, size: 32),
               onPressed: () {
@@ -163,8 +170,8 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
           
           // Info button (top right, below settings)
           Positioned(
-            top: 100,
-            right: 20,
+            top: 60,
+            right: 10,
             child: IconButton(
               icon: const Icon(Icons.info_outline, size: 32),
               onPressed: () {
@@ -194,23 +201,28 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.surface,
-        title: Text('About Apricus', style: Theme.of(context).textTheme.headlineMedium),
+        
+        title: Center(
+          child: Text('About Apricus', style: Theme.of(context).textTheme.headlineMedium),
+        ),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Team DRACO', style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 6),
-              Text(' Hana Ahmed Saeed', style: Theme.of(context).textTheme.bodyMedium),
-              Text(' Mohamed Adel Mohamed', style: Theme.of(context).textTheme.bodyMedium),
-              Text(' Nadine Haytham FathAllah', style: Theme.of(context).textTheme.bodyMedium),
-              Text(' Ayman Yasser Ahmed', style: Theme.of(context).textTheme.bodyMedium),
-              Text(' Awwab Khalil Ahmed', style: Theme.of(context).textTheme.bodyMedium),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
+              Text('Hana Ahmed Saeed', style: Theme.of(context).textTheme.bodyMedium),
+              Text('Mohamed Adel Mohamed', style: Theme.of(context).textTheme.bodyMedium),
+              Text('Nadine Haytham FathAllah', style: Theme.of(context).textTheme.bodyMedium),
+              Text('Ayman Yasser Ahmed', style: Theme.of(context).textTheme.bodyMedium),
+              Text('Awwab Khalil Ahmed', style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 10),
               Text(
                 'Educational space weather game for kids',
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontFamily: 'Mansalva',
                   color: AppColors.textSecondary,
                 ),
               ),

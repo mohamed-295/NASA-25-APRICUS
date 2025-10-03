@@ -6,6 +6,7 @@ import 'core/constants/routes.dart';
 import 'providers/game_provider.dart';
 import 'screens/cosmic_hub_screen.dart';
 import 'screens/story_library_screen.dart';
+import 'screens/story_reader_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/splash_screen.dart';
 
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
             Routes.splash: (context) => const SplashScreen(),
             Routes.hub: (context) => const CosmicHubScreen(),
             Routes.library: (context) => const StoryLibraryScreen(),
+            Routes.reader: (context) => const StoryReaderScreen(),
             Routes.settings: (context) => const SettingsScreen(),
           },
         ),

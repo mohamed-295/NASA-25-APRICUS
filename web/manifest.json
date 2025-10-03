@@ -1,6 +1,6 @@
 {
-    "name": "v1",
-    "short_name": "v1",
+    "name": "apricus",
+    "short_name": "apricus",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

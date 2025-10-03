@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../core/constants/app_colors.dart';
 import '../providers/game_provider.dart';
 import '../services/audio_service.dart';
-import '../widgets/shared/starfield_background.dart';
+import '../widgets/shared/static_background.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -14,7 +14,7 @@ class SettingsScreen extends StatelessWidget {
       body: Stack(
         children: [
           // Background
-          const StarfieldBackground(),
+          const StaticBackground(),
           
           // Content
           SafeArea(

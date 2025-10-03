@@ -4,8 +4,9 @@ import '../core/constants/app_colors.dart';
 import '../models/story.dart';
 import '../providers/game_provider.dart';
 import '../services/story_service.dart';
+import '../services/audio_service.dart';
 import '../widgets/library/story_book_card.dart';
-import '../widgets/shared/starfield_background.dart';
+import '../widgets/shared/static_background.dart';
 
 class StoryLibraryScreen extends StatefulWidget {
   const StoryLibraryScreen({super.key});
@@ -25,6 +26,9 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
   void initState() {
     super.initState();
     
+    // Resume background music when entering library
+    AudioService().resumeMusic();
+    
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
@@ -40,9 +44,9 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
 
   Future<void> _loadStories() async {
     try {
-      final story = await StoryService.loadTestStory();
+      final stories = await StoryService.loadAllStories();
       setState(() {
-        _stories = [story]; // Convert single story to list
+        _stories = stories;
         _isLoading = false;
       });
       _fadeController.forward();
@@ -53,7 +57,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error loading story: $e'),
+            content: Text('Error loading stories: $e'),
             backgroundColor: AppColors.error,
           ),
         );
@@ -73,7 +77,7 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
       body: Stack(
         children: [
           // Background
-          const StarfieldBackground(),
+          const StaticBackground(),
           
           // Content
           SafeArea(
@@ -182,6 +186,36 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
   }
 
   void _openStory(Story story) {
+    // Check if story is released
+    if (story.status != null && story.status!.toLowerCase() == 'coming soon') {
+      // Show coming soon message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Row(
+            children: [
+              const Icon(Icons.info_outline, color: Colors.white),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  '${story.title} is coming soon! Stay tuned for more adventures!',
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: AppColors.primary,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.all(16),
+        ),
+      );
+      return;
+    }
+    
+    // Story is released - open it
     final gameProvider = context.read<GameProvider>();
     gameProvider.setCurrentStory(story);
     Navigator.pushNamed(context, '/reader');
