@@ -6,6 +6,7 @@ class Story {
   final String title;
   final String? coverImage;
   final String? status;
+  final String? minigame; // Route to mini-game (e.g., 'aurora_creator')
   final List<StoryPage> pages;
   final StoryQuiz? quiz;
 
@@ -14,16 +15,19 @@ class Story {
     required this.title,
     this.coverImage,
     this.status,
+    this.minigame,
     required this.pages,
     this.quiz,
   });
 
   factory Story.fromJson(Map<String, dynamic> json) {
     try {
-      // Check if this is a nested story (old format) or direct story object (new format)
+      // Check if this is a nested story (old format), onboarding, or direct story object
       final storyData = json.containsKey('story') 
           ? json['story'] as Map<String, dynamic>
-          : json;
+          : json.containsKey('on-boarding')
+              ? json['on-boarding'] as Map<String, dynamic>
+              : json;
           
       final id = storyData['id'] as int;
       final title = storyData['title'] as String;
@@ -48,6 +52,7 @@ class Story {
         title: title,
         coverImage: coverImage,
         status: status,
+        minigame: storyData['minigame'] as String?,
         pages: pages,
         quiz: quiz,
       );

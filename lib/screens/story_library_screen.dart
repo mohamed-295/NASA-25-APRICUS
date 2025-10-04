@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../core/constants/app_colors.dart';
+import '../core/constants/routes.dart';
 import '../models/story.dart';
 import '../providers/game_provider.dart';
 import '../services/story_service.dart';
@@ -91,7 +92,10 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
                       // Back button
                       IconButton(
                         icon: const Icon(Icons.arrow_back, size: 32),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          AudioService().playSfx('button');
+                          Navigator.pop(context);
+                        },
                       ),
                       
                       const SizedBox(width: 16),
@@ -186,38 +190,11 @@ class _StoryLibraryScreenState extends State<StoryLibraryScreen>
   }
 
   void _openStory(Story story) {
-    // Check if story is released
-    if (story.status != null && story.status!.toLowerCase() == 'coming soon') {
-      // Show coming soon message
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              const Icon(Icons.info_outline, color: Colors.white),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  '${story.title} is coming soon! Stay tuned for more adventures!',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: AppColors.primary,
-          duration: const Duration(seconds: 3),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          margin: const EdgeInsets.all(16),
-        ),
-      );
-      return;
-    }
+    AudioService().playSfx('button');
     
     // Story is released - open it
     final gameProvider = context.read<GameProvider>();
     gameProvider.setCurrentStory(story);
-    Navigator.pushNamed(context, '/reader');
+    Navigator.pushNamed(context, Routes.reader);
   }
 }

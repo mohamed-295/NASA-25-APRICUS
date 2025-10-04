@@ -9,6 +9,9 @@ import 'screens/story_library_screen.dart';
 import 'screens/story_reader_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/games_screen.dart';
+import 'screens/games/aurora_creator_game_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,10 +74,13 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.splash,
           routes: {
             Routes.splash: (context) => const SplashScreen(),
+            Routes.onboarding: (context) => const OnboardingScreen(),
             Routes.hub: (context) => const CosmicHubScreen(),
             Routes.library: (context) => const StoryLibraryScreen(),
             Routes.reader: (context) => const StoryReaderScreen(),
             Routes.settings: (context) => const SettingsScreen(),
+            Routes.games: (context) => const GamesScreen(),
+            Routes.auroraCreator: (context) => const AuroraCreatorGameScreen(),
           },
         ),
       ),

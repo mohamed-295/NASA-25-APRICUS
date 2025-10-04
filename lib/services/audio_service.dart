@@ -1,5 +1,6 @@
 import 'package:just_audio/just_audio.dart';
 import '../core/constants/audio_constants.dart';
+import './storage_service.dart';
 
 class AudioService {
   static final AudioService _instance = AudioService._internal();
@@ -13,11 +14,22 @@ class AudioService {
   bool _initialized = false;
   double _musicVolume = AudioConstants.defaultMusicVolume;
   double _sfxVolume = AudioConstants.defaultSfxVolume;
-  bool _musicEnabled = true;
+  bool _musicEnabled = false;  // Default to false until loaded from storage
   bool _sfxEnabled = true;
 
   Future<void> init() async {
     if (_initialized) return;
+    
+    // Load saved settings from storage
+    _musicEnabled = StorageService.musicEnabled;
+    _sfxEnabled = StorageService.sfxEnabled;
+    _musicVolume = StorageService.musicVolume;
+    _sfxVolume = StorageService.sfxVolume;
+    
+    // Ensure music player is stopped if music is disabled
+    if (!_musicEnabled) {
+      await _musicPlayer.stop();
+    }
     
     // Create SFX player pool (10 players for multiple simultaneous sounds)
     for (int i = 0; i < 10; i++) {
@@ -25,10 +37,18 @@ class AudioService {
     }
     
     _initialized = true;
+    
+    print('AudioService initialized: musicEnabled=$_musicEnabled, sfxEnabled=$_sfxEnabled, musicVol=$_musicVolume, sfxVol=$_sfxVolume');
   }
 
   // Background Music controls
   Future<void> playBackgroundMusic() async {
+    // Wait for initialization if not done yet
+    while (!_initialized) {
+      await Future.delayed(const Duration(milliseconds: 50));
+    }
+    
+    print('playBackgroundMusic called: _musicEnabled=$_musicEnabled');
     if (!_musicEnabled) return;
     
     try {
@@ -46,7 +66,7 @@ class AudioService {
   }
 
   Future<void> resumeMusic() async {
-    if (_musicEnabled) {
+    if (_musicEnabled && _musicPlayer.processingState != ProcessingState.idle) {
       await _musicPlayer.play();
     }
   }
@@ -64,10 +84,10 @@ class AudioService {
   void setMusicEnabled(bool enabled) {
     _musicEnabled = enabled;
     if (!enabled) {
-      pauseMusic();
-      _quizMusicPlayer.pause();
+      stopMusic();  // Stop completely instead of just pausing
+      _quizMusicPlayer.stop();
     } else {
-      resumeMusic();
+      playBackgroundMusic();  // Start fresh when enabling
     }
   }
 
@@ -101,13 +121,12 @@ class AudioService {
 
   // SFX controls with specific sound effects
   Future<void> playSfx(String sfxType) async {
-    if (!_sfxEnabled) return;
-    
-    // TODO: Re-encode button.mp3 and success.mp3 - current files are corrupted
-    // Temporarily skip button and success sounds to avoid errors
-    if (sfxType == 'button' || sfxType == 'success') {
-      return; // Skip corrupted sound files
+    // Wait for initialization if not done yet
+    while (!_initialized) {
+      await Future.delayed(const Duration(milliseconds: 50));
     }
+    
+    if (!_sfxEnabled) return;
     
     String? assetPath;
     
@@ -132,10 +151,11 @@ class AudioService {
         return;
     }
     
-    // Find available player
+    // Find available player (not playing or completed)
     AudioPlayer? availablePlayer;
     for (var player in _sfxPlayers) {
-      if (!player.playing) {
+      if (!player.playing || player.processingState == ProcessingState.completed || 
+          player.processingState == ProcessingState.idle) {
         availablePlayer = player;
         break;
       }
@@ -143,12 +163,16 @@ class AudioService {
     
     if (availablePlayer != null) {
       try {
+        // Stop and reset the player first
+        await availablePlayer.stop();
         await availablePlayer.setAsset(assetPath);
         await availablePlayer.setVolume(_sfxVolume);
         await availablePlayer.play();
       } catch (e) {
         print('Error playing SFX $sfxType: $e');
       }
+    } else {
+      print('No available SFX player - all busy');
     }
   }
 

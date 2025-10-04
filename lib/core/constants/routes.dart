@@ -1,9 +1,11 @@
 class Routes {
   static const String splash = '/splash';
+  static const String onboarding = '/onboarding';
   static const String hub = '/';
   static const String library = '/library';
   static const String reader = '/reader';
   static const String settings = '/settings';
+  static const String games = '/games';
   
   // Games
   static const String auroraCreator = '/games/aurora_creator';

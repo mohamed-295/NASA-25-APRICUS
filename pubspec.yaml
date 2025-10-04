@@ -75,7 +75,9 @@ flutter:
     - assets/images/
     - assets/images/characters/
     - assets/images/stories/sunny_and_windy/
+    - assets/images/stories/sunny's_big_sneeze/
     - assets/images/story_covers/
+    - assets/images/onboarding/
     - assets/sounds/
     - assets/music/
     - assets/voiceover/

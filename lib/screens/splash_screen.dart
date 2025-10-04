@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../core/constants/routes.dart';
+import '../services/onboarding_service.dart';
 import '../services/audio_service.dart';
 import '../services/storage_service.dart';
 
@@ -31,11 +32,22 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
     _boot();
 
-    _controller.addStatusListener((status) {
+    _controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed && _initDone && mounted) {
-        Navigator.of(context).pushReplacementNamed(Routes.hub);
+        await _checkOnboardingAndNavigate();
       }
     });
+  }
+
+  Future<void> _checkOnboardingAndNavigate() async {
+    final hasCompleted = await OnboardingService.hasCompletedOnboarding();
+    if (!mounted) return;
+    
+    if (hasCompleted) {
+      Navigator.of(context).pushReplacementNamed(Routes.hub);
+    } else {
+      Navigator.of(context).pushReplacementNamed(Routes.onboarding);
+    }
   }
 
   Future<void> _boot() async {
@@ -53,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen>
     if (!mounted) return;
     // If animation already finished, navigate now
     if (_controller.status == AnimationStatus.completed) {
-      Navigator.of(context).pushReplacementNamed(Routes.hub);
+      await _checkOnboardingAndNavigate();
     }
   }
 

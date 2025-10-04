@@ -12,7 +12,14 @@ import '../widgets/reader/story_page_content.dart';
 import '../widgets/reader/story_quiz_dialog.dart';
 
 class StoryReaderScreen extends StatefulWidget {
-  const StoryReaderScreen({super.key});
+  final VoidCallback? onStoryComplete;
+  final bool isOnboarding;
+  
+  const StoryReaderScreen({
+    super.key,
+    this.onStoryComplete,
+    this.isOnboarding = false,
+  });
 
   @override
   State<StoryReaderScreen> createState() => _StoryReaderScreenState();
@@ -56,7 +63,10 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
     // Pause background music for story reading
     AudioService().pauseMusic();
     
-    _loadStory();
+    // Defer story loading until after build phase
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadStory();
+    });
   }
   
   @override
@@ -70,12 +80,21 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
 
   Future<void> _loadStory() async {
     final provider = context.read<GameProvider>();
-    final story = await StoryService.loadTestStory();
-    provider.setCurrentStory(story);
+    
+    // If onboarding mode, use the story already set by OnboardingService
+    // Otherwise use the story from GameProvider (set by library screen)
+    final story = widget.isOnboarding 
+        ? (StoryService.currentStory ?? await StoryService.loadTestStory())
+        : (provider.currentStory ?? await StoryService.loadTestStory());
+    
+    // Only set if not already set (avoid overriding library selection)
+    if (provider.currentStory != story) {
+      provider.setCurrentStory(story);
+    }
     _currentTextIndex = 0; // Reset text index
 
-    // Show tap hint only the first time per story
-    final seen = StorageService.hasSeenTapHintForStory(story.id);
+    // Show tap hint only the first time per story (skip for onboarding)
+    final seen = widget.isOnboarding ? true : StorageService.hasSeenTapHintForStory(story.id);
     setState(() {
       _showTapHint = !seen;
     });
@@ -107,9 +126,28 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
 
     setState(() {
       if (_currentTextIndex == 0) {
-        // First tap - show left text
-        _currentTextIndex = 1;
-        _leftDone = false;
+        // First tap - check if there's any first position text
+        final hasFirstText = (page.leftBottomText != null && page.leftBottomText!.isNotEmpty) ||
+            (page.leftCenterText != null && page.leftCenterText!.isNotEmpty) ||
+            (page.rightCenterText != null && page.rightCenterText!.isNotEmpty) ||
+            (page.centreBottomText != null && page.centreBottomText!.isNotEmpty);
+        
+        if (hasFirstText) {
+          _currentTextIndex = 1;
+          _leftDone = false;
+        } else {
+          // No first text, check for second position text only
+          final hasSecondText = (page.rightBottomText != null && page.rightBottomText!.isNotEmpty) ||
+              (page.rightUpText != null && page.rightUpText!.isNotEmpty) ||
+              (page.leftUpText != null && page.leftUpText!.isNotEmpty);
+          
+          if (hasSecondText) {
+            _currentTextIndex = 2;
+            _rightDone = false;
+          } else {
+            _moveToNextPageOrEnd(provider);
+          }
+        }
       } else if (_currentTextIndex == 1) {
         // Second tap - show right text or move to next page
         if (page.rightBottomText != null && page.rightBottomText!.isNotEmpty) {
@@ -122,7 +160,7 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
           _currentTextIndex = 2;
           _rightDone = false; // will use leftUp as the second text
         } else {
-          // No right text available, move to next page or end story
+          // No second text available, move to next page or end story
           _moveToNextPageOrEnd(provider);
         }
       } else {
@@ -180,6 +218,12 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
     // Get quiz directly from story object
     final quiz = story.quiz;
 
+    // Skip quiz for onboarding
+    if (widget.isOnboarding) {
+      _showStoryEndDialog();
+      return;
+    }
+
     if (quiz != null && mounted) {
       // Show quiz before completion dialog
       showDialog(
@@ -202,6 +246,12 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
   }
 
   void _showStoryEndDialog() {
+    // If there's a custom completion callback (e.g., for onboarding), use it
+    if (widget.onStoryComplete != null) {
+      widget.onStoryComplete!();
+      return;
+    }
+    
     // Skip completion dialog - go back to library immediately after quiz
     Navigator.of(context).pop(); // Go back to library
   }
@@ -266,24 +316,25 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
             },
           ),
           
-          // Navigation header - outside SafeArea to allow positioning beyond safe area
-          Consumer<GameProvider>(
-            builder: (context, provider, _) {
-              final story = provider.currentStory;
-              if (story == null) return const SizedBox.shrink();
-              
-              return Positioned(
-                top: MediaQuery.of(context).padding.top,
-                left: 0,
-                right: 0,
-                child: StoryNavigationHeader(
-                  currentPage: provider.currentPageIndex + 1,
-                  totalPages: story.pages.length,
-                  onBack: () => Navigator.pop(context),
-                ),
-              );
-            },
-          ),
+          // Navigation header - hide during onboarding
+          if (!widget.isOnboarding)
+            Consumer<GameProvider>(
+              builder: (context, provider, _) {
+                final story = provider.currentStory;
+                if (story == null) return const SizedBox.shrink();
+                
+                return Positioned(
+                  top: MediaQuery.of(context).padding.top,
+                  left: 0,
+                  right: 0,
+                  child: StoryNavigationHeader(
+                    currentPage: provider.currentPageIndex + 1,
+                    totalPages: story.pages.length,
+                    onBack: () => Navigator.pop(context),
+                  ),
+                );
+              },
+            ),
         ],
       ),
     );

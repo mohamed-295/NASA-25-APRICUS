@@ -85,29 +85,8 @@ class PlayOptionsDialog extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 AudioService().playSfx('button');
-                // Show coming soon message
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Row(
-                      children: [
-                        const Icon(Icons.videogame_asset, color: Colors.white),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            '🎮 Mini games coming soon! Get ready for exciting space adventures!',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ),
-                      ],
-                    ),
-                    backgroundColor: Colors.purple.withOpacity(0.9),
-                    behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    duration: const Duration(seconds: 4),
-                  ),
-                );
+                // Navigate to games screen
+                Navigator.pushNamed(context, Routes.games);
               },
             ),
             
@@ -115,7 +94,10 @@ class PlayOptionsDialog extends StatelessWidget {
             
             // Close button
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                AudioService().playSfx('button');
+                Navigator.pop(context);
+              },
               child: Text(
                 'Cancel',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(

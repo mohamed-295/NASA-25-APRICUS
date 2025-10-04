@@ -54,12 +54,18 @@ class StoryPage {
   String? get rightBottomText => content['right_bottom']?.text;
   String? get rightUpText => content['right_up']?.text;
   String? get leftUpText => content['left_up']?.text;
+  String? get centreBottomText => content['centre_bottom']?.text;
+  String? get leftCenterText => content['left_center']?.text;
+  String? get rightCenterText => content['right_center']?.text;
   
   // Helper methods to get audio from different positions
   String? get leftBottomAudio => content['left_bottom']?.audio;
   String? get rightBottomAudio => content['right_bottom']?.audio;
   String? get rightUpAudio => content['right_up']?.audio;
   String? get leftUpAudio => content['left_up']?.audio;
+  String? get centreBottomAudio => content['centre_bottom']?.audio;
+  String? get leftCenterAudio => content['left_center']?.audio;
+  String? get rightCenterAudio => content['right_center']?.audio;
   
   // Get all text content as a single string
   String get allText {

@@ -186,7 +186,10 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
             bottom: 40,
             right: 20,
             child: FloatingActionButton(
-              onPressed: _showChatComingSoon,
+              onPressed: () {
+                AudioService().playSfx('button');
+                _showChatComingSoon();
+              },
               backgroundColor: AppColors.accent,
               child: const Icon(Icons.chat_bubble_outline, color: Colors.white),
             ),
@@ -231,7 +234,10 @@ class _CosmicHubScreenState extends State<CosmicHubScreen>
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              AudioService().playSfx('button');
+              Navigator.pop(context);
+            },
             child: const Text('Close'),
           ),
         ],

@@ -5,6 +5,7 @@
             "title": "Sunny and Windy",
             "cover_image": "assets/images/story_covers/Sunny_Windy.png",
             "status": "Released",
+            "minigame": "aurora_creator",
             "pages": [
                 {
                     "page_number": 1,
@@ -171,20 +172,86 @@
         {
             "id": 2,
             "title": "Sunny's Big Sneeze",
-            "cover_image": "assets/images/story_covers/Coming_Soon.png",
-            "status": "Coming soon",
+            "cover_image": "assets/images/story_covers/sunny's_big_sneeze.png",
+            "status": "Released",
             "pages": [
                 {
                     "page_number": 1,
-                    "image": "assets/images/stories/sunny_and_windy/1.png",
+                    "image": "assets/images/stories/sunny's_big_sneeze/1.png",
+                    "content": {
+                    
+                        "right_center": {
+                            "text": "Hi again! It's me, Sunny the Sun!",
+                            "audio": ""
+                        }
+                    }
+                },
+                {
+                    "page_number": 2,
+                    "image": "assets/images/stories/sunny's_big_sneeze/2.png",
+                    "content": {
+                        "left_center": {
+                            "text": "Every day I shine bright, giving my friend Earth warm hugs and light.I love making flowers bloom, keeping oceans sparkling, and helping kids play outside.",
+                            "audio": ""
+                        }
+                        
+                    }
+                },
+                {
+                    "page_number": 3,
+                    "image": "assets/images/stories/sunny's_big_sneeze/3.png",
                     "content": {
                         "left_bottom": {
-                            "text": "",
-                            "audio": "assets/audio/stories/sunny_and_windy/record_1.mp3"
+                            "text": "But… sometimes… ahhh–chooo! Oh no! I sneeze! When I sneezes, it's called a solar flare—a big burst of light and energy. My sneeze zooms through space at the speed of light—super, super fast!",
+                            "audio": ""
+                        }
+                    }
+                },
+                {
+                    "page_number": 4,
+                    "image": "assets/images/stories/sunny's_big_sneeze/4.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "\"Whoa, Sunny!\" says Echo the radio wave, wobbling in the sky. \"Your sneeze made me all dizzy! Now the airplanes can't hear me clearly.\"",
+                            "audio": ""
+                        }
+                    }
+                },
+                {
+                    "page_number": 5,
+                    "image": "assets/images/stories/sunny's_big_sneeze/5.png",
+                    "content": {
+                        "left_bottom": {
+                            "text": "GPS, who helps people find their way, scratches his head.\"Oh dear! Sunny's sneeze made me go fuzzy. I don't know left from right anymore!\"",
+                            "audio": ""
+                        },
+                        "right_up": {
+                            "text": "Meanwhile, up above Earth, the astronauts hear me sneeze again— ahhh–chooo!\"Quick! To the safe room!\" the astronauts shout, floating into a cozy shelter inside their spaceship.",
+                            "audio": ""
+                        }
+                    }
+                },
+                {
+                    "page_number": 6,
+                    "image": "assets/images/stories/sunny's_big_sneeze/6.png",
+                    "content": {
+                        "right_bottom": {
+                            "text": "Earth smiles kindly.\"Don't worry, little ones. My thick blanket of air and strong magnetic shield will protect everyone on the ground. Sunny's sneezes may be loud, but I'll keep you safe.\"",
+                            "audio": ""
+                        }
+                    }
+                },
+                {
+                    "page_number": 7,
+                    "image": "assets/images/stories/sunny's_big_sneeze/7.png",
+                    "content": {
+                        "left_center": {
+                            "text": "I blush and grin shyly\"Sorry, friends. I don't mean to cause trouble. I just get a little sneezy sometimes!\"",
+                            "audio": ""
                         },
                         "right_bottom": {
-                            "text": "",
-                            "audio": "assets/audio/stories/sunny_and_windy/record_2.mp3"
+                            "text": "And so, life goes on. Echo steadies, GPS clears up, astronauts peek out again, and Earth gives Sunny a big smile.Because even when I sneeze, I'm still Sunny—and I'll always send my best friend Earth warm hugs and light.",
+                            "audio": ""
                         }
                     }
                 }
@@ -193,14 +260,36 @@
                 "questions": [
                     {
                         "id": 1,
-                        "text": "",
+                        "text": "What is a solar flare?",
                         "options": [
-                            "",
-                            "",
-                            ""
+                            "Sunny's sneeze",
+                            "A big explosion",
+                            "Both are correct!"
+                        ],
+                        "correct_answer": 2,
+                        "explanation": "Solar flares are like the Sun sneezing - big bursts of energy!"
+                    },
+                    {
+                        "id": 2,
+                        "text": "How does Earth protect us from solar flares?",
+                        "options": [
+                            "With an umbrella",
+                            "Magnetic field and atmosphere",
+                            "Hiding behind the Moon"
                         ],
                         "correct_answer": 1,
-                        "explanation": ""
+                        "explanation": "Earth's magnetic field and atmosphere work together to protect us!"
+                    },
+                    {
+                        "id": 3,
+                        "text": "What happens when Sunny sneezes (has a solar flare)?",
+                        "options": [
+                            "Nothing happens",
+                            "It can affect technology on Earth",
+                            "Sunny gets sleepy"
+                        ],
+                        "correct_answer": 1,
+                        "explanation": "Solar flares can disrupt GPS and communication systems on Earth."
                     }
                 ]
             }
@@ -250,15 +339,15 @@
             "pages": [
                 {
                     "page_number": 1,
-                    "image": "assets/images/stories/sunny_and_windy/1.png",
+                    "image": "",
                     "content": {
                         "left_bottom": {
                             "text": "",
-                            "audio": "assets/audio/stories/sunny_and_windy/record_1.mp3"
+                            "audio": ""
                         },
                         "right_bottom": {
                             "text": "",
-                            "audio": "assets/audio/stories/sunny_and_windy/record_2.mp3"
+                            "audio": ""
                         }
                     }
                 }

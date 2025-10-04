@@ -1,0 +1,75 @@
+{
+    "on-boarding": {
+        "id": 1,
+        "title": "Space Weather",
+        "cover_image": "",
+        "status":"Released",
+        "pages": [
+            {
+                "page_number": 1,
+                "image": "assets/images/onboarding/1.png",
+                "content": {
+                    "centre_bottom": {
+                        "text": "So..What’s Space Weather?",
+                        "audio": ""
+                    }
+                }
+            },
+            {
+                "page_number": 2,
+                "image": "assets/images/onboarding/2.png",
+                "content": {
+                    "centre_bottom": {
+                        "text": "You see, just like Earth has its own weather with rain and wind, space has weather too!",
+                        "audio": ""
+                    }
+                }
+            },
+            {
+                "page_number": 3,
+                "image": "assets/images/onboarding/3.png",
+                "content": {
+                    "centre_bottom": {
+                        "text": "Space weather is everything that happens in space because of ME.",
+                        "audio": ""
+                    }
+                }
+            },
+            {
+                "page_number": 4,
+                "image": "assets/images/onboarding/4.png",
+                "content": {
+                    "right_up": {
+                        "text": "When I’m calm, space weather is calm too.",
+                        "audio": ""
+                    }
+                    ,"left_bottom": {
+                        "text": "But when I’m sick -Achoooo, It gets a little messy.",
+                        "audio": ""
+                    }
+                }
+            },
+            {
+                "page_number": 5,
+                "image": "assets/images/onboarding/5.png",
+                "content": {
+                    "centre_bottom": {
+                        "text": "Sometimes my hair gets tangled and detangled and sends out a CME bubble, this is when Space Weather gets stormy.",
+                        "audio": ""
+                    }
+                }
+            },
+            {
+                "page_number": 6,
+                "image": "assets/images/onboarding/6.png",
+                "content": {
+                    "centre_bottom": {
+                        "text": "In short, Space Weather is my mood swings. Sometimes I’m calm so everything is too, and other times it gets all stormy because of me.",
+                        "audio": ""
+                    }
+                }
+            }
+           
+        ]
+    }
+}

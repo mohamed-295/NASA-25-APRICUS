@@ -125,19 +125,38 @@ class _StreamingTextState extends State<StreamingText>
     final int safeCount = _displayedCharacters.clamp(0, textLength);
     final String displayedText = widget.text.substring(0, safeCount);
 
+    // Determine alignment based on textAlign parameter
+    CrossAxisAlignment crossAlignment;
+    Alignment alignment;
+    
+    switch (widget.textAlign) {
+      case TextAlign.center:
+        crossAlignment = CrossAxisAlignment.center;
+        alignment = Alignment.center;
+        break;
+      case TextAlign.right:
+        crossAlignment = CrossAxisAlignment.end;
+        alignment = Alignment.centerRight;
+        break;
+      case TextAlign.left:
+      default:
+        crossAlignment = CrossAxisAlignment.start;
+        alignment = Alignment.centerLeft;
+        break;
+    }
+
     return AbsorbPointer(
       absorbing: widget.blockPointerWhileStreaming && (_isStreaming && !_isComplete),
       child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Directionality(
-              textDirection: TextDirection.ltr,
+        crossAxisAlignment: crossAlignment,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Align(
+              alignment: alignment,
               child: RichText(
-                textAlign: TextAlign.left,
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.left, // Always stream left-to-right
                 text: TextSpan(
                   style: widget.style ?? Theme.of(context).textTheme.bodyLarge,
                   children: [
@@ -147,8 +166,7 @@ class _StreamingTextState extends State<StreamingText>
               ),
             ),
           ),
-        ),
-      ],
+        ],
       ),
     );
   }

@@ -8,6 +8,7 @@ class AnimatedTextBubble extends StatefulWidget {
   final TextAlign textAlign;
   final Alignment scaleAlignment;
   final VoidCallback onCompleted;
+  final double? maxWidth;
 
   const AnimatedTextBubble({
     super.key,
@@ -16,6 +17,7 @@ class AnimatedTextBubble extends StatefulWidget {
     required this.textAlign,
     required this.scaleAlignment,
     required this.onCompleted,
+    this.maxWidth,
   });
 
   @override
@@ -49,7 +51,7 @@ class _AnimatedTextBubbleState extends State<AnimatedTextBubble> {
         );
       },
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 300),
+        constraints: BoxConstraints(maxWidth: widget.maxWidth ?? 300),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.85),

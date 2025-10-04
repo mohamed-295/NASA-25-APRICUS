@@ -74,8 +74,68 @@ class StoryPageContent extends StatelessWidget {
   List<Widget> _buildTextOverlays(BuildContext context) {
     final overlays = <Widget>[];
 
-    // Show left text if tapped at least once
-    if (currentTextIndex >= 1 && page.leftBottomText != null && page.leftBottomText!.isNotEmpty) {
+    // Check for centre_bottom text (for onboarding) - shows immediately on first tap
+    if (currentTextIndex >= 1 && page.centreBottomText != null && page.centreBottomText!.isNotEmpty) {
+      overlays.add(
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 40,
+          child: Center(
+            child: AnimatedTextBubble(
+              text: page.centreBottomText!,
+              audioPath: page.centreBottomAudio,
+              textAlign: TextAlign.center,
+              scaleAlignment: Alignment.bottomCenter,
+              maxWidth: 600,
+              onCompleted: onLeftDone,
+            ),
+          ),
+        ),
+      );
+    }
+    // Check for left_center text - shows on first tap, centered vertically on left
+    else if (currentTextIndex >= 1 && page.leftCenterText != null && page.leftCenterText!.isNotEmpty) {
+      overlays.add(
+        Positioned(
+          left: 60,
+          top: (MediaQuery.of(context).size.height * 0.5),
+          
+          child: Center(
+            child: AnimatedTextBubble(
+              text: page.leftCenterText!,
+              audioPath: page.leftCenterAudio,
+              textAlign: TextAlign.left,
+              scaleAlignment: Alignment.centerLeft,
+              maxWidth: 300,
+              onCompleted: onLeftDone,
+            ),
+          ),
+        ),
+      );
+    }
+    // Check for right_center text - shows on first tap, centered vertically on right
+    else if (currentTextIndex >= 1 && page.rightCenterText != null && page.rightCenterText!.isNotEmpty) {
+      overlays.add(
+        Positioned(
+          right: 70,
+          top: (MediaQuery.of(context).size.height * 0.5),
+          
+          child: Center(
+            child: AnimatedTextBubble(
+              text: page.rightCenterText!,
+              audioPath: page.rightCenterAudio,
+              textAlign: TextAlign.left,
+              scaleAlignment: Alignment.centerRight,
+              maxWidth: 400,
+              onCompleted: onLeftDone,
+            ),
+          ),
+        ),
+      );
+    }
+    // Show left text if tapped at least once (only if no centre_bottom or center positions)
+    else if (currentTextIndex >= 1 && page.leftBottomText != null && page.leftBottomText!.isNotEmpty) {
       overlays.add(
         Positioned(
           left: 60,
@@ -97,11 +157,11 @@ class StoryPageContent extends StatelessWidget {
         overlays.add(
           Positioned(
             right: 70,
-            bottom: 30,
+            bottom: 20,
             child: AnimatedTextBubble(
               text: page.rightBottomText!,
               audioPath: page.rightBottomAudio,
-              textAlign: TextAlign.right,
+             textAlign: TextAlign.left,
               scaleAlignment: Alignment.bottomRight,
               onCompleted: onRightDone,
             ),
@@ -115,7 +175,7 @@ class StoryPageContent extends StatelessWidget {
             child: AnimatedTextBubble(
               text: page.rightUpText!,
               audioPath: page.rightUpAudio,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
               scaleAlignment: Alignment.topRight,
               onCompleted: onRightDone,
             ),
