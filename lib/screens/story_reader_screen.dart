@@ -200,9 +200,13 @@ class _StoryReaderScreenState extends State<StoryReaderScreen> with SingleTicker
     } else {
       // Story has ended - stop voiceover and check for quiz
       VoiceService().stopVoiceover();
-      final storyId = provider.currentStory?.id;
-      if (storyId != null) {
-        provider.completeStory(storyId);
+      
+      // Only mark story as complete if it's not onboarding
+      if (!widget.isOnboarding) {
+        final storyId = provider.currentStory?.id;
+        if (storyId != null) {
+          provider.completeStory(storyId);
+        }
       }
       
       // Check if story has a quiz
