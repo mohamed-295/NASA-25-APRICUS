@@ -4,7 +4,7 @@ An educational Flutter app that teaches kids about space weather through interac
 
 ## 📱 Download
 
-**[Download Apricus APK](https://drive.google.com/file/d/1czYxRLvusQgY_9CGiGccNuEivz80Tlqc/view?usp=sharing)**
+**[Download Apricus APK](https://drive.google.com/file/d/1n6_tJdQxvTnFImcrp9FMMa-AeFcTNbR-/view?usp=drive_link)**
 
 ## ✨ Features
 
