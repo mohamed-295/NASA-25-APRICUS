@@ -182,7 +182,7 @@
                     
                         "right_center": {
                             "text": "Hi again! It's me, Sunny the Sun!",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/1.mp3"
                         }
                     }
                 },
@@ -192,7 +192,7 @@
                     "content": {
                         "left_center": {
                             "text": "Every day I shine bright, giving my friend Earth warm hugs and light.I love making flowers bloom, keeping oceans sparkling, and helping kids play outside.",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/2.mp3"
                         }
                         
                     }
@@ -203,7 +203,7 @@
                     "content": {
                         "left_bottom": {
                             "text": "But… sometimes… ahhh–chooo! Oh no! I sneeze! When I sneezes, it's called a solar flare—a big burst of light and energy. My sneeze zooms through space at the speed of light—super, super fast!",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/3.mp3"
                         }
                     }
                 },
@@ -213,7 +213,7 @@
                     "content": {
                         "left_bottom": {
                             "text": "\"Whoa, Sunny!\" says Echo the radio wave, wobbling in the sky. \"Your sneeze made me all dizzy! Now the airplanes can't hear me clearly.\"",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/4.mp3"
                         }
                     }
                 },
@@ -223,11 +223,11 @@
                     "content": {
                         "left_bottom": {
                             "text": "GPS, who helps people find their way, scratches his head.\"Oh dear! Sunny's sneeze made me go fuzzy. I don't know left from right anymore!\"",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/5.mp3"
                         },
                         "right_up": {
                             "text": "Meanwhile, up above Earth, the astronauts hear me sneeze again— ahhh–chooo!\"Quick! To the safe room!\" the astronauts shout, floating into a cozy shelter inside their spaceship.",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/6.mp3"
                         }
                     }
                 },
@@ -237,7 +237,7 @@
                     "content": {
                         "right_bottom": {
                             "text": "Earth smiles kindly.\"Don't worry, little ones. My thick blanket of air and strong magnetic shield will protect everyone on the ground. Sunny's sneezes may be loud, but I'll keep you safe.\"",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/7.mp3"
                         }
                     }
                 },
@@ -247,11 +247,11 @@
                     "content": {
                         "left_center": {
                             "text": "I blush and grin shyly\"Sorry, friends. I don't mean to cause trouble. I just get a little sneezy sometimes!\"",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/8.mp3"
                         },
                         "right_bottom": {
                             "text": "And so, life goes on. Echo steadies, GPS clears up, astronauts peek out again, and Earth gives Sunny a big smile.Because even when I sneeze, I'm still Sunny—and I'll always send my best friend Earth warm hugs and light.",
-                            "audio": ""
+                            "audio": "assets/voiceover/Sunny's_Big_Sneeze/9.mp3"
                         }
                     }
                 }

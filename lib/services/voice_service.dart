@@ -17,13 +17,22 @@ class VoiceService {
       // Stop any currently playing voiceover
       await _voicePlayer.stop();
       
+      print('Attempting to load voiceover: $audioPath');
+      
       // Load and play new voiceover
       await _voicePlayer.setAsset(audioPath);
       await _voicePlayer.setVolume(1.0);
       await _voicePlayer.play();
+      
+      print('Voiceover playing successfully: $audioPath');
     } catch (e) {
-      print('Error playing voiceover: $e');
+      print('Error playing voiceover: $audioPath');
+      print('Error details: $e');
       // Silently fail - voiceover is optional
+      // Try to reset the player for next use
+      try {
+        await _voicePlayer.stop();
+      } catch (_) {}
     }
   }
 
